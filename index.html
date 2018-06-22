@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <title>Youtube video player v1.0.1 by Zsolt Kiraly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="js/scripts.js"></script>
+</head>
+
+<body>
+
+
+
+    <header>
+        <h1>Youtube video player <span>JavaScript Youtube video player v1.0.1 by Zsolt Kiraly</span></h1>
+    </header>
+
+    <section class="basic-content">
+        <h2>Aliquam erat volutpat sed et volutpat ligula</h2>
+        <p>Donec quis lorem sit amet tortor varius consectetur. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum quam diam, sit amet iaculis ex commodo id. Maecenas vitae finibus massa. Suspendisse potenti. Donec pulvinar nunc ut elit porttitor mattis.</p>
+
+        <p>Cras non arcu quis turpis lacinia suscipit et a purus. Mauris eu maximus massa. Nam sed vestibulum orci, ut cursus neque. Fusce eget dui eros. Mauris dictum lacus a eros fermentum, eu fringilla elit scelerisque. Sed et varius mauris. Pellentesque in ligula a mi lobortis rutrum. Vestibulum ac pretium nulla. Pellentesque tempor augue at purus tincidunt, maximus semper nisl blandit.</p>
+
+        <p>Mauris fermentum elementum urna, sed blandit metus elementum at. Nullam ac dui non orci volutpat lobortis in quis libero. Duis dignissim rutrum leo ac mollis. Sed et volutpat ligula, sollicitudin porttitor elit. Maecenas faucibus molestie mauris, ut efficitur lorem placerat a.</p>
+    </section>
+
+    <div id="video-player-1" class="video-player full">
+        <div class="video">
+            <div class="background-img" style="background-image: url(images/ready-player-one.jpg);"></div>
+            <div class="play">
+                <svg class="video-overlay-play-button" viewBox="0 0 200 200" alt="Play video">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke-width="20" stroke="#61dafb"/>
+                    <polygon points="70, 55 70, 145 145, 100" fill="#61dafb"/>
+                </svg>
+            </div>
+            <div class="black"></div>
+            <div id="player"></div>
+        </div>
+    </div>
+
+    <script>
+
+    function createPlayer() {
+
+        var player,
+            targetId = document.querySelector('#video-player-1'),
+            targetPlayer = targetId.querySelector('#player');
+
+        player = new YT.Player(targetPlayer, {
+            height: '100%',
+            width: '100%',
+            videoId: 'cSp1dM2Vj48',
+            events: {
+                'onReady': function(event) {
+                    var play = targetId.querySelector('.play');
+
+                    play.addEventListener('click', function() {
+                        onPlayerReady(targetId);
+                        event.target.playVideo();
+                    }, false);
+                },
+                'onStateChange': function(event) {
+                    var stateData = event.data;
+
+                    onPlayerStateChange(stateData, targetId);
+                },
+            }
+        });
+    }
+
+    document.body.addEventListener('videoEvent', createPlayer, false);
+
+    </script>
+
+    <section class="basic-content">
+        <h2>Suspendisse potenti dictum quam diam</h2>
+        <p>Donec quis lorem sit amet tortor varius consectetur. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum quam diam, sit amet iaculis ex commodo id. Maecenas vitae finibus massa. Suspendisse potenti. Donec pulvinar nunc ut elit porttitor mattis.</p>
+
+        <p>Cras non arcu quis turpis lacinia suscipit et a purus. Mauris eu maximus massa. Nam sed vestibulum orci, ut cursus neque. Fusce eget dui eros. Mauris dictum lacus a eros fermentum, eu fringilla elit scelerisque. Sed et varius mauris. Pellentesque in ligula a mi lobortis rutrum. Vestibulum ac pretium nulla. Pellentesque tempor augue at purus tincidunt, maximus semper nisl blandit.</p>
+
+        <p>Mauris fermentum elementum urna, sed blandit metus elementum at. Nullam ac dui non orci volutpat lobortis in quis libero. Duis dignissim rutrum leo ac mollis. Sed et volutpat ligula, sollicitudin porttitor elit. Maecenas faucibus molestie mauris, ut efficitur lorem placerat a.</p>
+    </section>
+
+    <div id="video-player-2" class="video-player full">
+        <div class="video">
+            <div class="background-img" style="background-image: url(images/jumanji.jpg);"></div>
+            <div class="play">
+                <svg class="video-overlay-play-button" viewBox="0 0 200 200" alt="Play video">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke-width="20" stroke="#61dafb"/>
+                    <polygon points="70, 55 70, 145 145, 100" fill="#61dafb"/>
+                </svg>
+            </div>
+            <div class="black"></div>
+            <div id="player"></div>
+        </div>
+    </div>
+
+    <script>
+
+    function createPlayer() {
+
+        var player,
+            targetId = document.querySelector('#video-player-2'),
+            targetPlayer = targetId.querySelector('#player');
+
+        player = new YT.Player(targetPlayer, {
+            height: '100%',
+            width: '100%',
+            videoId: '2QKg5SZ_35I',
+            events: {
+                'onReady': function(event) {
+                    var play = targetId.querySelector('.play');
+
+                    play.addEventListener('click', function() {
+                        onPlayerReady(targetId);
+                        event.target.playVideo();
+                    }, false);
+
+                },
+                'onStateChange': function(event) {
+                    var stateData = event.data;
+
+                    onPlayerStateChange(stateData, targetId);
+                },
+            }
+        });
+    }
+
+    document.body.addEventListener('videoEvent', createPlayer, false);
+
+    </script>
+
+    <section class="basic-content">
+        <h2>Praesent dictum quam diam sed blandit metus elementum</h2>
+        <p>Donec quis lorem sit amet tortor varius consectetur. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum quam diam, sit amet iaculis ex commodo id. Maecenas vitae finibus massa. Suspendisse potenti. Donec pulvinar nunc ut elit porttitor mattis.</p>
+
+        <p>Cras non arcu quis turpis lacinia suscipit et a purus. Mauris eu maximus massa. Nam sed vestibulum orci, ut cursus neque. Fusce eget dui eros. Mauris dictum lacus a eros fermentum, eu fringilla elit scelerisque. Sed et varius mauris. Pellentesque in ligula a mi lobortis rutrum. Vestibulum ac pretium nulla. Pellentesque tempor augue at purus tincidunt, maximus semper nisl blandit.</p>
+
+        <p>Mauris fermentum elementum urna, sed blandit metus elementum at. Nullam ac dui non orci volutpat lobortis in quis libero. Duis dignissim rutrum leo ac mollis. Sed et volutpat ligula, sollicitudin porttitor elit. Maecenas faucibus molestie mauris, ut efficitur lorem placerat a.</p>
+    </section>
+
+    <footer>
+        <span>GitHub:</span> <a href="https://github.com/zsoltkiraly" title="GitHub" target="_blank">https://github.com/zsoltkiraly</a>
+    </footer>
+
+</body>
+</html>

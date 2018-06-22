@@ -1,0 +1,162 @@
+.video-player {
+    max-width: 1340px;
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    font-size: 0;
+    height: 550px;
+    overflow: hidden;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    .video { font-size: 18px; }
+
+    .video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: 1040px;
+        width: 100%;
+        max-height: 300px;
+        height: 100%;
+        overflow: hidden;
+        z-index: 3;
+
+        @include translate(-50%, -50%);
+        @include transition(max-width 1s ease-out, max-height 1s ease-out);
+
+        &.black { background-color: black; }
+
+        .background-img {
+            width: 100%;
+            max-width: 100%;
+            height: 550px;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            z-index: 4;
+            overflow: hidden;
+
+            @include background-size(cover);
+            @include opacity(1);
+            @include transition(opacity 1.5s ease-out);
+
+            &.opacity-hide { @include opacity(0); }
+            &.hide { display: none; }
+        }
+
+        .black {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            z-index: 3;
+            background-color: black;
+
+            @include opacity(1);
+            @include transition(opacity 1.5s ease-out);
+
+            &.opacity-hide { @include opacity(0); }
+            &.hide { display: none; }
+        }
+
+        iframe {
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+
+        .play {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            cursor: pointer;
+
+            @include opacity(1);
+            @include transition(opacity 1.5s ease-out);
+
+            svg {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 62px;
+                height: 62px;
+                display: inline-block;
+
+                @include translate(-50%, -50%);
+            }
+
+            &.opacity-hide { @include opacity(0); }
+            &:hover { @include opacity(.5); }
+            &.hide { display: none; }
+        }
+        
+        &.full-width {
+            max-width: 100%;
+            max-height: 100%;
+
+            .background-img { max-width: 100%; }
+        }
+    }
+
+    //Unique view
+    @media screen and (max-width: 1210px) {
+
+        .video {
+            max-width: 650px;
+
+            .background-img { max-width: 650px; }
+        }
+    }
+
+    //Unique view
+    @media screen and (max-width: 1110px) {
+
+        .video {
+            max-width: 500px;
+
+            .background-img { max-width: 500px; }
+        }
+    }
+
+    //Tablet view
+    @media screen and (max-width: 979px) {
+        height: auto;
+        min-height: auto;
+
+        .video {
+            position: relative;
+            width: 100%;
+            display: block;
+            max-width: 100%;
+            height: 300px;
+
+            .background-img {
+                max-width: 100%;
+                margin: 0 auto;
+                height: 300px;
+            }
+
+            iframe { height: 300px; }
+
+            &.full-width {
+                @include transition(max-width 0s ease-out);
+            }
+        }
+    }
+
+    @media screen and (max-width: 979px) {
+        overflow: hidden;
+    }
+}
