@@ -77,7 +77,7 @@ var videoPlayerProperties = function() {
                     video.style.transition = 'none'; 
 
                     function media() {
-                        if (window.matchMedia("(max-width: 769px)").matches) {
+                        if (window.matchMedia('(max-width: 769px)').matches) {
                             video.setAttribute('data-time', 0);
 
                         } else {
