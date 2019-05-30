@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href="css/demo.css">
-    <link rel="stylesheet" href="css/main.css">
-
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="js/scripts.js"></script>
+    
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/scripts.min.js"></script>
 </head>
 
 <body>
@@ -43,37 +43,32 @@
     </div>
 
     <script>
+        document.body.addEventListener('videoEvent', function() {
+            
+            var targetId = document.querySelector('#video-player-1'),
+                targetPlayer = targetId.querySelector('#player');
 
-    function createPlayer() {
+            var player = new YT.Player(targetPlayer, {
+                height: '100%',
+                width: '100%',
+                videoId: 'cSp1dM2Vj48',
+                events: {
+                    'onReady': function(event) {
+                        var play = targetId.querySelector('.play');
 
-        var player,
-            targetId = document.querySelector('#video-player-1'),
-            targetPlayer = targetId.querySelector('#player');
+                        play.addEventListener('click', function() {
+                            onPlayerReady(targetId);
+                            event.target.playVideo();
+                        }, false);
+                    },
+                    'onStateChange': function(event) {
+                        var stateData = event.data;
 
-        player = new YT.Player(targetPlayer, {
-            height: '100%',
-            width: '100%',
-            videoId: 'cSp1dM2Vj48',
-            events: {
-                'onReady': function(event) {
-                    var play = targetId.querySelector('.play');
-
-                    play.addEventListener('click', function() {
-                        onPlayerReady(targetId);
-                        event.target.playVideo();
-                    }, false);
-                },
-                'onStateChange': function(event) {
-                    var stateData = event.data;
-
-                    onPlayerStateChange(stateData, targetId);
-                },
-            }
+                        onPlayerStateChange(stateData, targetId);
+                    },
+                }
+            });
         });
-    }
-
-    document.body.addEventListener('videoEvent', createPlayer, false);
-
     </script>
 
     <section class="basic-content">
@@ -100,38 +95,33 @@
     </div>
 
     <script>
+        document.body.addEventListener('videoEvent', function() {
 
-    function createPlayer() {
+            var targetId = document.querySelector('#video-player-2'),
+                targetPlayer = targetId.querySelector('#player');
 
-        var player,
-            targetId = document.querySelector('#video-player-2'),
-            targetPlayer = targetId.querySelector('#player');
+            var player = new YT.Player(targetPlayer, {
+                height: '100%',
+                width: '100%',
+                videoId: '2QKg5SZ_35I',
+                events: {
+                    'onReady': function(event) {
+                        var play = targetId.querySelector('.play');
 
-        player = new YT.Player(targetPlayer, {
-            height: '100%',
-            width: '100%',
-            videoId: '2QKg5SZ_35I',
-            events: {
-                'onReady': function(event) {
-                    var play = targetId.querySelector('.play');
+                        play.addEventListener('click', function() {
+                            onPlayerReady(targetId);
+                            event.target.playVideo();
+                        }, false);
 
-                    play.addEventListener('click', function() {
-                        onPlayerReady(targetId);
-                        event.target.playVideo();
-                    }, false);
+                    },
+                    'onStateChange': function(event) {
+                        var stateData = event.data;
 
-                },
-                'onStateChange': function(event) {
-                    var stateData = event.data;
-
-                    onPlayerStateChange(stateData, targetId);
-                },
-            }
+                        onPlayerStateChange(stateData, targetId);
+                    },
+                }
+            });
         });
-    }
-
-    document.body.addEventListener('videoEvent', createPlayer, false);
-
     </script>
 
     <section class="basic-content">
